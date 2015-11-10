@@ -70,7 +70,7 @@
                     </li>
                     <!-- Aqui termina la opcion administrar-->
                     <li>
-                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#myModal"><span class="btn-estructurado">Iniciar Session</span></a>
+                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#myModal"><span class="btn-estructurado">Iniciar Sesion</span></a>
                     </li>
                     <!-- Para cuando el usuario ya este logeado quitar la parte de arriba y dejar esta-->
                     <!-- 

@@ -5,7 +5,7 @@
     <header class="intro-aerolinea intro-admin">
         <div class="container">
             <div class="rows">
-                <div class="col-md-3 intro-buscar">
+               <!-- <div class="col-md-3 intro-buscar">
                     <form>
                         <h3>Buscar:</h3>
                         <div class="form-group">
@@ -29,7 +29,7 @@
                         </div>
                         <button type="submit" class="btn btn-success btn-lg">Buscar</button>
                     </form>
-                </div>
+                </div>-->
                 <div class="col-md-9 intro-letras">
                     <h1>Mantenimiento Aerolinea</h1>
                 </div>
@@ -45,45 +45,42 @@
             <div class="rows">
                 <div class="col-md-12 agregar">
                     <h4><u>Agregar</u></h4>
-                    <form action="">
+                    <?=form::open('home/agregarAerolineas')?>
                         <div class="form-group">
                             <span>Nombre</span>
-                            <input type="input" class="form-control" placeholder="Nombre">
+                            <?=form::input('nombre')?>
                         </div>
-                        <div class="form-group">
-                            <span>Logo:</span>
-                            <input type="file">
-                        </div>
-                        <button type="button" class="btn btn-info">Agregar</button>
-                    </form>
+                        <?=form::submit('submit','Agregar')?>
+                    <?=form::close()?>
                 </div>
             </div>
             <div class="rows listar">
                 <div class="col-md-12">
                     <h4>Litado:</h4>
                     <div id="mantenimiento-tabla">
-                        <form action="procesos/adminU.php" method="post" enctype="multipart/form-data">
+                        
                             <div class="table-responsive">
                                 <table class="table table-striped success table-hover table-condensed">
                                     <tr>
                                         <th><strong>ID Aerolinea</strong></th>
                                         <th><strong>Nombre</strong></th>
-                                        <th><strong>Logo</strong></th>
-                                        <th><strong>Cambiar Logo</strong></th>
                                         <th><strong>Modificar</strong></th>
+                                        <th><strong>Borrar</strong></th>
                                     </tr>
                                     <?php foreach($aerolineas as $aerolinea){?>
                                     <tr>
-                                        <td><?=$aerolinea->idaerolinea?></td>
-                                        <td><input class="form-control" placeholder="Nombre" value="<?=$aerolinea->nombre?>"></td>
-                                        <td><img src="<?=url::base()?><?=$aerolinea->ruta_logo?>" alt='AVIANCA' class='imagen'></td>
-                                        <td><input type="file" name="foto"></td>
-                                        <td><button name="" type='submit' class='btn btn-primary'>Modificar</button></td>
+                                        <?=form::open('home/editarAerolineas')?>
+                                        <td><?=form::input('id',$aerolinea->id)?></td>
+                                        <td><?=form::input('nombre',$aerolinea->nombre)?></td>
+                                        <!--<td><input class="form-control" placeholder="Nombre" value="<?=$aerolinea->nombre?>"></td>-->
+                                        <td><?=form::submit('submit','Modificar')?></td>
+                                        <td><?=html::anchor('home/borrarAerolineas/'.$aerolinea->id,'Borrar')?></td>
+                                        <?=form::close()?>
                                     </tr>
                                     <?php }?>
                                 </table>
                             </div>
-                        </form>
+            
                     </div>
                 </div>
             </div>

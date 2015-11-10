@@ -14,9 +14,47 @@ class Controller_home extends Controller_Template {
 		$this->template->content = View::factory('admin_aerolinea')->bind('aerolineas',$model);
 
 	}
+	public function action_editarAerolineas()
+	{
+		$aerolinea = ORM::factory('Aerolinea',$_POST['id']);
+		unset($_POST['id']);
+		$aerolinea->values($_POST);
+		$aerolinea->save();
+		Request::initial()->redirect('home/editarAerolineas');
+
+	}
+	public function action_agregarAerolineas()
+	{
+		$aerolinea = ORM::factory('Aerolinea');
+		$aerolinea->nombre = $_POST['nombre'];
+		$aerolinea->save();
+		Request::initial()->redirect('home/editarAerolineas');
+
+	}
+	public function action_borrarAerolineas()
+	{
+		$id = $this->request->param('id');
+		$aerolinea=ORM::factory('Aerolinea',$id)->delete();
+
+	}
+	public function action_categoriaVuelo()
+	{
+		$model = ORM::factory('Aerolinea')->select('aerolinea.nombre','')->from()->join()->on();
+		$this->template->content = View::factory('admin_categoriaVuelo');
+	}
 	public function action_destino()
 	{
-		$this->template->content = View::factory('admin_destino');
+		$pais = ORM::factory('Pais')->find_all();
+		$destinos = ORM::factory('Destino')->find_all();
+		$this->template->content = View::factory('admin_destino')->bind('paises',$pais)->bind('destinos',$destinos);
+	}
+	public function action_agregarDestino()
+	{
+		$pais = ORM::factory('Destino');
+		$pais->nombreCiudad=$_POST['nombre'];
+		$pais->descripcion = $_POST['descripcion'];
+		$pais->idpais = $_POST['idpais'];
+		$pais->save();
 	}
 	public function action_destinoHotel()
 	{
