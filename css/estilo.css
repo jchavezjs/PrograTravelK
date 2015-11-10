@@ -10,9 +10,11 @@ html {
     width: 100%;
     height: 100%;
 }
-
+footer{
+    padding-top: 5%;
+}
 a {
-    color: #42dca3;
+    color: white;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -26,6 +28,19 @@ a:focus {
 
 .light {
     font-weight: 400;
+}
+.intro-h1{
+    margin-top: 20%;
+    font-weight: 600;
+    font-size: 60px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 2px #000;
+}
+
+.intro-h3{
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: 3px 3px 2px rgba(0,0,0,0.5);
 }
 
 .navbar-custom {
@@ -114,7 +129,7 @@ a:focus {
 .modal-font{
     color: gray;
 }
-.intro {
+.intro{
     display: table;
     width: 100%;
     height: ;
@@ -127,37 +142,43 @@ a:focus {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    -webkit-filter: opacity(.8);
+    filter: opacity(.8);
 }
-.intro-aerolinea{
-    background: url(../img/aerolinea.jpg) no-repeat bottom center scroll;
-}
-.intro-categoriavuelo{
-    background: url(../img/categoriavuelo.jpg) no-repeat bottom center scroll;
-}
-.intro-destino{
-    background: url(../img/destino.jpg) no-repeat bottom center scroll;
-}
-.intro-destinohotel{
-    background: url(../img/destinohotel.jpg) no-repeat bottom center scroll;
-}
-.intro-galeria{
-    background: url(../img/galeria.jpg) no-repeat bottom center scroll;
-}
+
 .intro-hotel{
+    display: table;
+    width: 100%;
+    height: ;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
     background: url(../img/hotel.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: opacity(.8);
+    filter: opacity(.8);
 }
-.intro-pais{
-    background: url(../img/pais.jpg) no-repeat bottom center scroll;
+.intro-vuelos{
+    display: table;
+    width: 100%;
+    height: ;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../img/vuelos.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: opacity(.8);
+    filter: opacity(.8);
 }
-.intro-tarjetausuario{
-    background: url(../img/tarjetausuario.jpg) no-repeat bottom center scroll;
-}
-.intro-tipotarjeta{
-    background: url(../img/tipotarjeta.jpg) no-repeat bottom center scroll;
-}
-.intro-usuario{
-    background: url(../img/usuario.jpg) no-repeat bottom center scroll;
-}
+
 .intro-admin {
     display: table;
     width: 100%;
@@ -170,16 +191,7 @@ a:focus {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-position: center ;
-}
-
-.intro-letras{
-    text-align: center;
-    margin-top: 20%;
-    margin-bottom: 20%;
-    text-transform: uppercase;
-    font-variant: small-caps;
-    text-shadow: 3px 3px 2px #696;
+    background-position: center;
 }
 
 @media(min-width:768px) {
@@ -187,19 +199,16 @@ a:focus {
         height: 100%;
         padding: 0;
     }
-    .intro-admin{
-        height: 50%;
+    .intro-hotel {
+        height: 100%;
+        padding: 0;
+    }
+    .intro-vuelos{
+        height: 100%;
         padding: 0;
     }
 }
 
-.intro-buscar{
-    margin-top: 100px;
-    background: rgba(0,0,0,.9);
-    padding: 30px;
-    border-radius: 10px;
-    z-index: 300;
-}
 
 .admin-mantenimientos{
     background: white;
@@ -243,12 +252,50 @@ footer p {
     padding-left: 4%;
 }
 
-.btn-estructurado{
-    background: transparent;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white; 
-    padding: 0.5em 3em;
+.centrar{
+    text-align: center;
+    margin-top: 250px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 2px #000;
+}
+.sec-destinos{
+    background: white;
+}
+
+.div-destino{;
+    margin:0;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    -webkit-filter: opacity(.5);
+    filter: opacity(.5);
+}
+.div-destino:hover{
+    -webkit-filter: opacity(1);
+    filter: opacity(1);
+}
+.div-destino-a{
+    width: 100%;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background-color: #045E7F;
+}
+.div-destino-a h1{
+    letter-spacing: 1em;
+    text-shadow: 3px 3px 2px rgba(0,0,0,0.4);
+}
+.div-destino-a h4{
+    letter-spacing: 0.1em;
+    text-shadow: 3px 3px 2px rgba(0,0,0,0.4);
+}
+.div-destino h2{
+    text-transform: uppercase;
+    text-shadow: 3px 3px 2px #000;
+}
+.div-destino h1{
+    text-transform: uppercase;
+    text-shadow: 3px 3px 2px #000;
 }
 .btn-estructurado:hover{
     background: white;
@@ -258,32 +305,51 @@ footer p {
     padding: 0.5em 3em;
     color:rgba(0,0,0,.5);
 }
-
-
-.cuadro{
-    margin-top: 50%;
-    background: rgba(0,0,0,.9);
-    padding: 30px;
-    border-radius: 10px;
-    z-index: 300;
+.btn-estructurado{
+    background: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white; 
+    padding: 0.5em 3em;
+    z-index: 100;
 }
 
-@media (max-width: 767px) {
-    .affix{
-        position: static;
-        margin-top: 50%;
-    }
-    .cuadro{
-    margin-top: 0%;
-    padding: 0;
-    }
+.intro-reserva {
+    background: url(../img/usuario.jpg) no-repeat bottom center scroll;
+    display: table;
+    width: 100%;
+    height: 50%;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+
 }
-@media (max-width: 480px) {
-    .affix{
-        position: static;
-    }
-    .cuadro{
-    margin-top: 0%;
-    padding: 0;
-    }
+.intro-perfil {
+    background: url(../img/perfil.jpg) no-repeat bottom center scroll;
+    display: table;
+    width: 100%;
+    height: 50%;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+
+}
+.formulario{
+    padding-top: 2em;   
+    color:rgba(0,0,0,0.6);
+}
+form{
+    padding: 5% 0;
 }

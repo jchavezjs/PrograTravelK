@@ -5,8 +5,8 @@ class Controller_home extends Controller_Template {
 	public $template = 'template';
 	public function action_index()
 	{
-
-		$this->template->content = View::factory('index/indexview');
+		$paises = ORM::factory('Pais')->find_all();
+		$this->template->content = View::factory('index/indexview')->bind('paises',$paises);
 	}
 	public function action_adminAerolineas()
 	{
