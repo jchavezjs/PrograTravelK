@@ -48,9 +48,9 @@
                     <?=form::open('home/agregarAerolineas')?>
                         <div class="form-group">
                             <span>Nombre</span>
-                            <?=form::input('nombre')?>
+                            <input type="text" class="form-control" name="nombre">
                         </div>
-                        <?=form::submit('submit','Agregar')?>
+                        <input type="submit" class="btn btn-info" value="Agregar">
                     <?=form::close()?>
                 </div>
             </div>
@@ -70,10 +70,10 @@
                                     <?php foreach($aerolineas as $aerolinea){?>
                                     <tr>
                                         <?=form::open('home/editarAerolineas')?>
-                                        <td><?=form::input('id',$aerolinea->id)?></td>
-                                        <td><?=form::input('nombre',$aerolinea->nombre)?></td>
-                                        <!--<td><input class="form-control" placeholder="Nombre" value="<?=$aerolinea->nombre?>"></td>-->
-                                        <td><?=form::submit('submit','Modificar')?></td>
+                                        <td><input type="text" name="id" class="form-control" value="<?=$aerolinea->id?>" readonly></td>
+                                        <td><input type="text" name="nombre" class="form-control" value="<?=$aerolinea->nombre?>"></td>
+
+                                        <td><input type="submit" class="btn btn-info" value="Modificar"> </td>
                                         <td><?=html::anchor('home/borrarAerolineas/'.$aerolinea->id,'Borrar')?></td>
                                         <?=form::close()?>
                                     </tr>
@@ -87,35 +87,4 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="rows">
-                <div class="col-md-4">
-                    <h4><u>CONTACTENOS</u></h4>
-                    <p><span class="glyphicon glyphicon-phone"></span>  Telefono: (+503) 2233-5564</p>
-                    <p><span class="glyphicon glyphicon-envelope"></span>  Correo: info@progratravel.com</p>
-                    <p><span class="glyphicon glyphicon-map-marker"></span>  Direccion: Av. Olimpica #132, San Salvador, El Salvador</p>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4 text-right">
-                    <h4><u>Redes Sociales</u></h4>
-                    <a href="#"><img class="socialintro" src="img/facebook.png"></a>
-                    <a href="#"><img class="socialintro" src="img/twitter.png"></a>
-                    <a href="#"><img class="socialintro" src="img/youtube.png"></a>
-                </div>
-            </div>
-        </div>
-        <div class="rows">
-           <div class="container text-center">
-            <p>Copyright &copy; Programacion IV - Kohana Framework</p>
-        </div> 
-        </div>
-        
-    </footer>
-
- 
-</body>
-
-</html>
+  

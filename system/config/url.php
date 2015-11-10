@@ -3,6 +3,7 @@
 return array(
 
 	'trusted_hosts' => array(
+        'localhost:8080',
 		// Set up your hostnames here
 		//
 		// Example:

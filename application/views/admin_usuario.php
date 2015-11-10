@@ -186,35 +186,3 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="rows">
-                <div class="col-md-4">
-                    <h4><u>CONTACTENOS</u></h4>
-                    <p><span class="glyphicon glyphicon-phone"></span>  Telefono: (+503) 2233-5564</p>
-                    <p><span class="glyphicon glyphicon-envelope"></span>  Correo: info@progratravel.com</p>
-                    <p><span class="glyphicon glyphicon-map-marker"></span>  Direccion: Av. Olimpica #132, San Salvador, El Salvador</p>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4 text-right">
-                    <h4><u>Redes Sociales</u></h4>
-                    <a href="#"><img class="socialintro" src="img/facebook.png"></a>
-                    <a href="#"><img class="socialintro" src="img/twitter.png"></a>
-                    <a href="#"><img class="socialintro" src="img/youtube.png"></a>
-                </div>
-            </div>
-        </div>
-        <div class="rows">
-           <div class="container text-center">
-            <p>Copyright &copy; Programacion IV - Kohana Framework</p>
-        </div> 
-        </div>
-        
-    </footer>
-
-</body>
-
-</html>

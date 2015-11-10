@@ -20,7 +20,7 @@ class Controller_home extends Controller_Template {
 		unset($_POST['id']);
 		$aerolinea->values($_POST);
 		$aerolinea->save();
-		Request::initial()->redirect('home/editarAerolineas');
+		$this->redirect('home/adminAerolineas',302);
 
 	}
 	public function action_agregarAerolineas()
@@ -28,13 +28,14 @@ class Controller_home extends Controller_Template {
 		$aerolinea = ORM::factory('Aerolinea');
 		$aerolinea->nombre = $_POST['nombre'];
 		$aerolinea->save();
-		Request::initial()->redirect('home/editarAerolineas');
+		$this->redirect('home/adminAerolineas',302);
 
 	}
 	public function action_borrarAerolineas()
 	{
 		$id = $this->request->param('id');
 		$aerolinea=ORM::factory('Aerolinea',$id)->delete();
+		$this->redirect('home/adminAerolineas',302);
 
 	}
 	public function action_categoriaVuelo()
