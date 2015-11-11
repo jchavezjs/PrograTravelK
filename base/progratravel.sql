@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.4.14
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2015 a las 21:37:33
--- Versión del servidor: 10.0.17-MariaDB
--- Versión de PHP: 5.6.14
+-- Tiempo de generación: 12-11-2015 a las 00:06:50
+-- Versión del servidor: 5.6.26
+-- Versión de PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `agencia_viajes`
+-- Base de datos: `progratravel`
 --
+CREATE DATABASE IF NOT EXISTS `progratravel` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `progratravel`;
 
 -- --------------------------------------------------------
 
@@ -26,18 +28,17 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `aerolinea`
 --
 
-CREATE TABLE `aerolinea` (
+CREATE TABLE IF NOT EXISTS `aerolinea` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nombre` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `aerolinea`
 --
 
 INSERT INTO `aerolinea` (`id`, `nombre`) VALUES
-(1, 'Taca'),
-(2, 'Avianca');
+(1, 'Taca');
 
 -- --------------------------------------------------------
 
@@ -45,12 +46,12 @@ INSERT INTO `aerolinea` (`id`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `hotel`
 --
 
-CREATE TABLE `hotel` (
+CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
   `precio` double NOT NULL,
-  `ruta_foto` varchar(100) NOT NULL,
-  `idpais` int(11) NOT NULL
+  `idpais` int(11) NOT NULL,
+  `ruta_foto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,10 +60,9 @@ CREATE TABLE `hotel` (
 -- Estructura de tabla para la tabla `pais`
 --
 
-CREATE TABLE `pais` (
+CREATE TABLE IF NOT EXISTS `pais` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `ruta_foto` varchar(100) NOT NULL
+  `nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,15 +71,15 @@ CREATE TABLE `pais` (
 -- Estructura de tabla para la tabla `reserva`
 --
 
-CREATE TABLE `reserva` (
+CREATE TABLE IF NOT EXISTS `reserva` (
   `id` int(11) NOT NULL,
   `idtarjeta` int(11) NOT NULL,
   `idusuario` int(11) NOT NULL,
   `idpais` int(11) NOT NULL,
   `idvuelo` int(11) NOT NULL,
   `idhotel` int(11) NOT NULL,
-  `numeroPersona` int(11) NOT NULL,
-  `numeroDias` int(11) NOT NULL,
+  `nPersonas` int(11) NOT NULL,
+  `nDias` int(11) NOT NULL,
   `total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,10 +89,10 @@ CREATE TABLE `reserva` (
 -- Estructura de tabla para la tabla `tarjeta`
 --
 
-CREATE TABLE `tarjeta` (
+CREATE TABLE IF NOT EXISTS `tarjeta` (
   `id` int(11) NOT NULL,
-  `idusuario` int(11) NOT NULL,
-  `numeroTarjeta` varchar(100) NOT NULL
+  `idUsario` int(11) NOT NULL,
+  `nTarjeta` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -101,13 +101,13 @@ CREATE TABLE `tarjeta` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `correo` varchar(100) NOT NULL,
-  `usuario` varchar(100) NOT NULL,
-  `contraseña` varchar(20) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `correo` varchar(30) NOT NULL,
+  `usuario` varchar(10) NOT NULL,
+  `clave` varchar(8) NOT NULL,
   `tipo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -117,10 +117,10 @@ CREATE TABLE `usuario` (
 -- Estructura de tabla para la tabla `vuelo`
 --
 
-CREATE TABLE `vuelo` (
+CREATE TABLE IF NOT EXISTS `vuelo` (
   `id` int(11) NOT NULL,
-  `idpais` int(11) NOT NULL,
-  `idaerolinea` int(11) NOT NULL,
+  `idPais` int(11) NOT NULL,
+  `idAerolinea` int(11) NOT NULL,
   `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -152,7 +152,7 @@ ALTER TABLE `pais`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idtarjeta` (`idtarjeta`,`idusuario`,`idpais`,`idvuelo`,`idhotel`),
+  ADD KEY `idtarjeta` (`idtarjeta`),
   ADD KEY `idusuario` (`idusuario`),
   ADD KEY `idpais` (`idpais`),
   ADD KEY `idvuelo` (`idvuelo`),
@@ -163,7 +163,7 @@ ALTER TABLE `reserva`
 --
 ALTER TABLE `tarjeta`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idusuario` (`idusuario`);
+  ADD KEY `idUsario` (`idUsario`);
 
 --
 -- Indices de la tabla `usuario`
@@ -176,8 +176,8 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `vuelo`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idpais` (`idpais`,`idaerolinea`),
-  ADD KEY `idaerolinea` (`idaerolinea`);
+  ADD KEY `idPais` (`idPais`),
+  ADD KEY `idAerolinea` (`idAerolinea`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -187,7 +187,7 @@ ALTER TABLE `vuelo`
 -- AUTO_INCREMENT de la tabla `aerolinea`
 --
 ALTER TABLE `aerolinea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `hotel`
 --
@@ -229,32 +229,25 @@ ALTER TABLE `hotel`
   ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`idpais`) REFERENCES `pais` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `pais`
---
-ALTER TABLE `pais`
-  ADD CONSTRAINT `pais_ibfk_1` FOREIGN KEY (`id`) REFERENCES `vuelo` (`idpais`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`idtarjeta`) REFERENCES `tarjeta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`idpais`) REFERENCES `pais` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reserva_ibfk_3` FOREIGN KEY (`idpais`) REFERENCES `pais` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reserva_ibfk_4` FOREIGN KEY (`idvuelo`) REFERENCES `vuelo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reserva_ibfk_5` FOREIGN KEY (`idhotel`) REFERENCES `hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `reserva_ibfk_3` FOREIGN KEY (`idtarjeta`) REFERENCES `tarjeta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tarjeta`
 --
 ALTER TABLE `tarjeta`
-  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`idUsario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vuelo`
 --
 ALTER TABLE `vuelo`
-  ADD CONSTRAINT `vuelo_ibfk_1` FOREIGN KEY (`idaerolinea`) REFERENCES `aerolinea` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `vuelo_ibfk_1` FOREIGN KEY (`idPais`) REFERENCES `pais` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vuelo_ibfk_2` FOREIGN KEY (`idAerolinea`) REFERENCES `aerolinea` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -57,32 +57,37 @@ class Controller_home extends Controller_Template {
 		$pais->idpais = $_POST['idpais'];
 		$pais->save();
 	}
-	public function action_destinoHotel()
+	
+	public function action_adminReserva()
 	{
-		$this->template->content = View::factory('admin_destinohotel');
+		$this->template->content = View::factory('admin_reserva');
 	}
-	public function action_galeria()
-	{
-		$this->template->content = View::factory('admin_galeria');
-	}
-	public function action_hotel()
+	public function action_adminHotel()
 	{
 		$this->template->content = View::factory('admin_hotel');
+	}
+	public function action_adminTarjeta()
+	{
+		$this->template->content = View::factory('admin_tarjeta');
 	}
 	public function action_adminPais()
 	{
 		$this->template->content = View::factory('admin_pais');
 	}
-	public function action_adminTarjeta()
-	{
-		$this->template->content = View::factory('admin_tarjetausuario');
-	}
-	public function action_tipoTarjeta()
-	{
-		$this->template->content = View::factory('admin_tipotarjeta');
-	}
 	public function action_adminUsuario()
 	{
 		$this->template->content = View::factory('admin_usuario');
+	}
+	public function action_adminVuelo()
+	{
+		$this->template->content = View::factory('admin_vuelo');
+	}
+	public function action_usuario()
+	{
+		$this->template->content = View::factory('perfil');
+	}
+	public function action_reservaUsuario()
+	{
+		$this->template->content = View::factory('reserva');
 	}
 }
