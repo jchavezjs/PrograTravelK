@@ -41,6 +41,7 @@
                     </li>
 
                      <!-- Mostrar esta parte solo si es Administrador-->
+                     
                     <li>
                         <a class="page-scroll" href="#"data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Administrar <span class="caret"></span></a>
                         <ul class="dropdown-menu drop" aria-labelledby="dropdownMenu1">
@@ -83,24 +84,24 @@
                     <h4 class="modal-title modal-font" id="myModalLabel">Inicio de Session</h4>
                 </div>
                 <!-- Aqui esta el form de inicio de session -->
-                <form>
+                <?=form::open('home/auth')?>
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="modal-font" for="exampleInputEmail1">Usuario:</label>
-                            <input type="input" class="form-control" placeholder="Usuario">
+                            <input type="input" class="form-control" name="usuario" placeholder="Usuario">
                         </div>
                         <div class="form-group">
                             <label class="modal-font" for="exampleInputPassword1">Contraseña:</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+                            <input type="password" class="form-control" name="clave" id="exampleInputPassword1" placeholder="Contraseña">
                         </div>
-                        <button type="button" class="btn btn-primary btn-block">Iniciar Sesion</button>
+                        <input type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button>
                         
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         
                     </div>
-                </form>
+                <?=form::close()?>
             </div>
         </div>
     </div>
@@ -113,27 +114,27 @@
                     <h4 class="modal-title modal-font" id="myModalLabel">Registrarse</h4>
                 </div>
                 <!-- Aqui esta el form de inicio de session -->
-                <form>
+                <?=form::open('home/registrar')?>
                     <div class="modal-body">
                         <div class="form-group">
                         <label>Nombre:</label>
-                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Nombre" name="nombre">
                     </div>
                     <div class="form-group">
                         <label>Apellido:</label>
-                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Apellido">
+                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Apellido" name="apellido">
                     </div>
                     <div class="form-group">
                         <label>Correo:</label>
-                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Correo">
+                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Correo" name="correo">
                     </div>
                     <div class="form-group">
                         <label>Usuario:</label>
-                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
+                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Usuario" name="usuario">
                     </div>
                     <div class="form-group">
                         <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Contraseña" name="clave">
                     </div>
                     
                                     
@@ -143,7 +144,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         
                     </div>
-                </form>
+                <?=form::close()?>
             </div>
         </div>
     </div>

@@ -15,23 +15,22 @@
         </div>
         <div class="container formulario">
             <div class="rows">
-                <form action="">
+                <?=form::open('home/adminPais')?>
                     <div class="form-group">
                         <label>Nombre país:</label>
-                        <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Nombre país">
+                        <input type="input" class="form-control" id="exampleInputEmail1" name="nombre" placeholder="Nombre país">
                     </div>
                     <div class="form-group">
                         <label>Logo:</label>
-                        <input type="file">
+                        <input type="file" name="foto">
                     </div>                                   
                     <button type="submit" class="btn btn-primary btn-block">Agregar</button>
-                </form>
+                <?form::close()?>
             </div>
              <div class="rows listar">
                 <div class="col-md-12">
                     <h4>Litado:</h4>
                     <div id="mantenimiento-tabla">
-                        <form action="procesos/adminU.php" method="post" enctype="multipart/form-data">
                             <div class="table-responsive">
                                 <table class="table table-striped success table-hover table-condensed">
                                     <tr>
@@ -53,7 +52,6 @@
                                     
                                 </table>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
